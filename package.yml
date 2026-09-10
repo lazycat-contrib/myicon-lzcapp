@@ -1,0 +1,14 @@
+package: community.lazycat.app.myicon
+version: 1.0.0
+name: MyIcon
+description: 轻量自托管图标库 — NAS 图标管理工具（Nuxt 4 + Element Plus）
+homepage: https://github.com/ljw98/MyIcon
+author: ljw98
+min_os_version: 1.5.0
+locales:
+  zh:
+    name: MyIcon
+    description: 轻量自托管图标库 — NAS 图标管理工具（Nuxt 4 + Element Plus）
+  en:
+    name: MyIcon
+    description: A lightweight self-hosted icon library and NAS icon manager built with Nuxt 4 and Element Plus.

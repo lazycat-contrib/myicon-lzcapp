@@ -1,0 +1,24 @@
+application:
+  subdomain: myicon
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://myicon:3000/
+services:
+  myicon:
+    # upstream: ghcr.io/ljw98/myicon:latest@sha256:a7614f65e891c93436d308ee994accdf468f6edcb6bfd5e5dbc84bab800939f4
+    image: ghcr.1ms.run/ljw98/myicon:latest@sha256:a7614f65e891c93436d308ee994accdf468f6edcb6bfd5e5dbc84bab800939f4
+    binds:
+      - /lzcapp/var/data:/app/public/data
+      - /lzcapp/var/auth:/app/server/data
+usage: |
+  默认管理员账号：admin
+  默认密码：123456
+  首次登录后请在账号安全设置中修改默认密码，再分享应用地址。
+  上游默认开启游客只读模式，管理员可在设置中关闭。管理操作由 MyIcon 自身鉴权。
+  图标、壁纸及站点设置保存至 /lzcapp/var/data；认证和登录令牌保存至 /lzcapp/var/auth。
+  镜像首次启动会填充空挂载目录，备份时请同时保留两个目录。
+  保留手动登录，不添加文件选择器；后续镜像更新通过喵喵商店发布。

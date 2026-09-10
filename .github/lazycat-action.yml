@@ -1,0 +1,36 @@
+version: 1
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: myicon
+    bump: patch
+build:
+  toolchains: []
+  run_buildscript: false
+images:
+  - id: myicon
+    target: service
+    service: myicon
+    source: ghcr.io/ljw98/myicon
+    channel: custom
+    sort: created
+    tag_regex: '^latest$'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: MyIcon
+    summary: 轻量自托管图标库 — NAS 图标管理工具（Nuxt 4 + Element Plus）
